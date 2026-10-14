@@ -45,15 +45,23 @@
     <h1>Buy intel CORE i5 8th Gen $50</h1>
 </button>
 
+<button id="buycpu2" onclick="biicpu2()" style="position: absolute; top: 300px; left: 175px;">
+    <h1>Buy intel CORE i7 8th Gen $250</h1>
+</button>
+
 <button id="buyRAM" onclick="biiRAM()" style="position: absolute; top: 300px; left: 600px;">
     <h1>Buy 2GB DDR3 SO-DIMM RAM $15</h1>
 </button>
 
-<button id="buyRAM2" onclick="biiRAM2()" style="position: absolute; top: 300px; left: 1050px;">
-    <h1>Buy 4GB DDR3 SO-DIMM RAM $15</h1>
+<button id="buyRAM3" onclick="biiRAM3()" style="position: absolute; top: 500px; left: 1050px;">
+    <h1>Buy 8GB DDR3 SO-DIMM RAM $125</h1>
 </button>
 
-<button id="buySlotz" onclick="biislots()" style="position: absolute; top: 500px; left: 750px;">
+<button id="buyRAM2" onclick="biiRAM2()" style="position: absolute; top: 300px; left: 1050px;">
+    <h1>Buy 4GB DDR3 SO-DIMM RAM $35</h1>
+</button>
+
+<button id="buySlotz" onclick="biislots()" style="position: absolute; top: 500px; left: 600px;">
     <h1>Upgrade RAM capacity $15</h1>
 </button>
 
@@ -62,6 +70,10 @@
 </h1>
 
 <h1 id="sodimm001ddr3" style="position: absolute; top: 375px; left: 1250px;">
+    0
+</h1>
+
+<h1 id="sodimm0001ddr3" style="position: absolute; top: 600px; left: 1250px;">
     0
 </h1>
 
@@ -77,15 +89,23 @@
     <h1>Remove 4GB RAM</h1>
 </button>
 
+<button id="reRAM3" onclick="RAMre3()" style="position: absolute; top: 600px; left: 300px;">
+    <h1>Remove 8GB RAM</h1>
+</button>
+
 <button id="adRAM2" onclick="RAMad2()" style="position: absolute; top: 500px; left: 50px;">
     <h1>Add 4GB RAM</h1>
 </button>
 
-<button id="Ezes" onclick="clr()" style="position: absolute; top: 600px; left: 50px;">
-    <h1>Vi111m111thGen</h1>
+<button id="adRAM3" onclick="RAMad3()" style="position: absolute; top: 600px; left: 50px;">
+    <h1>Add 8GB RAM</h1>
 </button>
 
 <script>
+
+    // Before code \\
+
+    document.getElementById("buycpu2").style.display = "none";
 
     // Variables \\
 
@@ -98,6 +118,10 @@
     let sodimm001ddr3in = 0
 
     let sodimm01ddr3in = 1
+
+    let sodimm0001ddr3 = 0
+
+    let sodimm0001ddr3in = 0
 
     let tram = 2
 
@@ -114,10 +138,12 @@
     let cpu = {}
     cpu.i111m111th = 0
     cpu.i11m0001th = 0
+    cpu.i111m0001th = 0
 
     let prcr = {}
     prcr.inteli111m111 = true
     prcr.inteli11m0001 = false
+    prcr.inteli111m0001 = false
 
     // Intervals \\
 
@@ -153,6 +179,19 @@
             prcr.inteli111m111 = false
             document.getElementById("CPU").innerText = "CPU: intel CORE i5 8th Gen"
             document.getElementById("buycpu").style.display = "none";
+            document.getElementById("buycpu2").style.display = "block";
+            document.getElementById("moneyz").innerText = "$" + money
+        }
+    }
+
+    function biicpu2() {
+        if (money >= 250) {
+            money = (money - 250)
+            cpu.i111m0001th = (cpu.i111m0001th + 1)
+            prcr.inteli111m0001 = true
+            prcr.inteli11m0001 = false
+            document.getElementById("CPU").innerText = "CPU: intel CORE i7 8th Gen"
+            document.getElementById("buycpu2").style.display = "none";
             document.getElementById("moneyz").innerText = "$" + money
         }
     }
@@ -180,6 +219,18 @@
         }
     }
 
+    function biiRAM3() {
+        if (money >= 125) {
+            money = (money - 125)
+            tram = (sodimm001ddr3in * 2)
+            document.getElementById("RAM").innerText = "RAM: " + tram + "GB DDR3 SO-DIMM"
+            document.getElementById("buyRAM").style.display = "block";
+            sodimm0001ddr3 = (sodimm0001ddr3 + 1)
+            document.getElementById("moneyz").innerText = "$" + money
+            document.getElementById("sodimm0001ddr3").innerText = sodimm0001ddr3
+        }
+    }
+
     function biislots() {
         if (money >= 15) {
             money = (money - 15)
@@ -192,16 +243,17 @@
     }
 
     function RAM() {
-        tram = ((sodimm01ddr3in * 2) + (sodimm001ddr3in * 4))
+        tram = ((sodimm01ddr3in * 2) + ((sodimm001ddr3in * 4)) + (sodimm0001ddr3in * 8))
         document.getElementById("RAM").innerText = "RAM: " + tram + "GB DDR3 SO-DIMM"
-        document.getElementById("RAMslotz").innerText = (sodimm01ddr3in + sodimm001ddr3in)  + "/" + slots
+        document.getElementById("RAMslotz").innerText = (sodimm01ddr3in + (sodimm001ddr3in + sodimm0001ddr3in))  + "/" + slots
         document.getElementById("sodimm01ddr3").innerText = sodimm01ddr3
         document.getElementById("sodimm001ddr3").innerText = sodimm001ddr3
+        document.getElementById("sodimm0001ddr3").innerText = sodimm0001ddr3
     }
 
     function RAMad() {
         if (sodimm01ddr3 >= 1) {
-            if ((sodimm01ddr3in + sodimm001ddr3in) < slots) {
+            if ((sodimm01ddr3in + (sodimm001ddr3in + sodimm0001ddr3in)) < slots) {
                 sodimm01ddr3 = (sodimm01ddr3 - 1)
                 sodimm01ddr3in = (sodimm01ddr3in + 1)
             }
@@ -222,11 +274,28 @@
         }
     }
 
+    function RAMre3() {
+        if (sodimm0001ddr3in >= 1) {
+            sodimm0001ddr3in = (sodimm0001ddr3in - 1)
+            sodimm0001ddr3 = (sodimm0001ddr3 + 1)
+        }
+    }
+
     function RAMad2() {
         if (sodimm001ddr3 >= 1) {
-            if ((sodimm01ddr3in + sodimm001ddr3in) < slots) {
+            if ((sodimm01ddr3in + (sodimm001ddr3in + sodimm0001ddr3in)) < slots) {
                 sodimm001ddr3 = (sodimm001ddr3 - 1)
                 sodimm001ddr3in = (sodimm001ddr3in + 1)
+                document.getElementById("sodimm0001ddr3").innerText = sodimm0001ddr3
+            }
+        }
+    }
+
+    function RAMad3() {
+        if (sodimm0001ddr3 >= 1) {
+            if ((sodimm01ddr3in + (sodimm001ddr3in + sodimm0001ddr3in)) < slots) {
+                sodimm0001ddr3 = (sodimm0001ddr3 - 1)
+                sodimm0001ddr3in = (sodimm0001ddr3in + 1)
             }
         }
     }
@@ -239,6 +308,9 @@
             }
             if (prcr.inteli11m0001 === true) {
                 score1 = 12
+            }
+            if (prcr.inteli111m0001 === true) {
+                score1 = 17
             }
             score2 = (tram * 2)
             score = (score1 + score2)
