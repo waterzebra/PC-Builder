@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+
+<html>
+<body>
+
+<h1 id="Your PC" style="position: absolute; top: 100px; left: 50px;">
+    Your PC
+</h1>
+
+<h1 id="Your PC2" style="position: absolute; top: 100px; left: 200px;">
+    Build: Small PC
+</h1>
+
+<button id="goliv" onclick="xliv()" style="position: absolute; top: 100px; left: 700px;">
+    <h1>Record</h1>
+</button>
+
+<h1 id="scorenz" style="position: absolute; top: 100px; left: 500px;">
+    Your PC
+</h1>
+
+<h1 id="moneyz" style="position: absolute; top: 50px; left: 50px;">
+    $5
+</h1>
+
+<h1 id="CPU" style="position: absolute; top: 150px; left: 50px;">
+    CPU: intel CORE i7 7th Gen
+</h1>
+
+<img id="i7" src="Intel7thgen.JPG" style="position: absolute; top: 165px; left: 500px;" height="50px" width="50px"></img>
+
+<h1 id="RAM" style="position: absolute; top: 200px; left: 50px;">
+    RAM: 2GB DDR3 SO-DIMM
+</h1>
+
+<h1 id="RAMslotz" style="position: absolute; top: 200px; left: 500px;">
+    1/2
+</h1>
+
+<button id="shop" onclick="shopping()" style="position: absolute; top: 300px; left: 50px;">
+    <h1>Shop</h1>
+</button>
+
+<button id="buycpu" onclick="biicpu()" style="position: absolute; top: 300px; left: 200px;">
+    <h1>Buy intel CORE i5 8th Gen $50</h1>
+</button>
+
+<button id="buyRAM" onclick="biiRAM()" style="position: absolute; top: 300px; left: 600px;">
+    <h1>Buy 2GB DDR3 SO-DIMM RAM $15</h1>
+</button>
+
+<button id="buyRAM2" onclick="biiRAM2()" style="position: absolute; top: 300px; left: 1050px;">
+    <h1>Buy 4GB DDR3 SO-DIMM RAM $15</h1>
+</button>
+
+<button id="buySlotz" onclick="biislots()" style="position: absolute; top: 500px; left: 750px;">
+    <h1>Upgrade RAM capacity $15</h1>
+</button>
+
+<h1 id="sodimm01ddr3" style="position: absolute; top: 375px; left: 750px;">
+    0
+</h1>
+
+<h1 id="sodimm001ddr3" style="position: absolute; top: 375px; left: 1250px;">
+    0
+</h1>
+
+<button id="adRAM" onclick="RAMad()" style="position: absolute; top: 400px; left: 50px;">
+    <h1>Add 2GB RAM</h1>
+</button>
+
+<button id="reRAM" onclick="RAMre()" style="position: absolute; top: 400px; left: 300px;">
+    <h1>Remove 2GB RAM</h1>
+</button>
+
+<button id="reRAM2" onclick="RAMre2()" style="position: absolute; top: 500px; left: 300px;">
+    <h1>Remove 4GB RAM</h1>
+</button>
+
+<button id="adRAM2" onclick="RAMad2()" style="position: absolute; top: 500px; left: 50px;">
+    <h1>Add 4GB RAM</h1>
+</button>
+
+<button id="Ezes" onclick="clr()" style="position: absolute; top: 600px; left: 50px;">
+    <h1>Vi111m111thGen</h1>
+</button>
+
+<script>
+
+    // Variables \\
+
+    let tgl = 1
+
+    let sodimm01ddr3 = 0
+
+    let sodimm001ddr3 = 0
+
+    let sodimm001ddr3in = 0
+
+    let sodimm01ddr3in = 1
+
+    let tram = 2
+
+    let slots = 2
+
+    let money = 5
+
+    let score1 = 0
+
+    let score2 = 0
+
+    let score = 0
+
+    let cpu = {}
+    cpu.i111m111th = 0
+    cpu.i11m0001th = 0
+
+    let prcr = {}
+    prcr.inteli111m111 = true
+    prcr.inteli11m0001 = false
+
+    // Intervals \\
+
+    setInterval(RAM, 100)
+
+    setInterval(scorez, 100)
+
+    setInterval(liv, 28079)
+
+    // Functions \\
+
+    function xshopping() {
+        if (tgl === 1) {
+            document.getElementById("buycpu").style.display = "none";
+            document.getElementById("buyRAM").style.display = "none";
+            document.getElementById("buySlotz").style.display = "none";
+            document.getElementById("sodimm01ddr3").style.display = "none";
+            tgl = 0
+        }
+        else {
+            tgl = 1
+            document.getElementById("buycpu").style.display = "block";
+            document.getElementById("buyRAM").style.display = "block";
+            document.getElementById("buySlotz").style.display = "block";
+            document.getElementById("sodimm01ddr3").style.display = "block";
+        }
+    }
+
+    function biicpu() {
+        if (money >= 50) {
+            money = (money - 50)
+            prcr.inteli11m0001 = true
+            prcr.inteli111m111 = false
+            document.getElementById("CPU").innerText = "CPU: intel CORE i5 8th Gen"
+            document.getElementById("buycpu").style.display = "none";
+            document.getElementById("moneyz").innerText = "$" + money
+        }
+    }
+
+    function biiRAM() {
+        if (money >= 15) {
+            money = (money - 15)
+            tram = (sodimm01ddr3in * 2)
+            document.getElementById("RAM").innerText = "RAM: " + tram + "GB DDR3 SO-DIMM"
+            document.getElementById("buyRAM").style.display = "block";
+            sodimm01ddr3 = (sodimm01ddr3 + 1)
+            document.getElementById("moneyz").innerText = "$" + money
+        }
+    }
+
+    function biiRAM2() {
+        if (money >= 35) {
+            money = (money - 35)
+            tram = (sodimm001ddr3in * 2)
+            document.getElementById("RAM").innerText = "RAM: " + tram + "GB DDR3 SO-DIMM"
+            document.getElementById("buyRAM").style.display = "block";
+            sodimm001ddr3 = (sodimm001ddr3 + 1)
+            document.getElementById("moneyz").innerText = "$" + money
+            document.getElementById("sodimm001ddr3").innerText = sodimm001ddr3
+        }
+    }
+
+    function biislots() {
+        if (money >= 15) {
+            money = (money - 15)
+            tram = (sodimm01ddr3in * 2)
+            document.getElementById("RAM").innerText = "RAM: " + tram + "GB DDR3 SO-DIMM"
+            slots = (slots + 2)
+            document.getElementById("moneyz").innerText = "$" + money
+            document.getElementById("buySlotz").style.display = "none";
+        }
+    }
+
+    function RAM() {
+        tram = ((sodimm01ddr3in * 2) + (sodimm001ddr3in * 4))
+        document.getElementById("RAM").innerText = "RAM: " + tram + "GB DDR3 SO-DIMM"
+        document.getElementById("RAMslotz").innerText = (sodimm01ddr3in + sodimm001ddr3in)  + "/" + slots
+        document.getElementById("sodimm01ddr3").innerText = sodimm01ddr3
+        document.getElementById("sodimm001ddr3").innerText = sodimm001ddr3
+    }
+
+    function RAMad() {
+        if (sodimm01ddr3 >= 1) {
+            if ((sodimm01ddr3in + sodimm001ddr3in) < slots) {
+                sodimm01ddr3 = (sodimm01ddr3 - 1)
+                sodimm01ddr3in = (sodimm01ddr3in + 1)
+            }
+        }
+    }
+
+    function RAMre() {
+        if (sodimm01ddr3in >= 1) {
+                sodimm01ddr3in = (sodimm01ddr3in - 1)
+                sodimm01ddr3 = (sodimm01ddr3 + 1)
+        }
+    }
+
+    function RAMre2() {
+        if (sodimm001ddr3in >= 1) {
+            sodimm001ddr3in = (sodimm001ddr3in - 1)
+            sodimm001ddr3 = (sodimm001ddr3 + 1)
+        }
+    }
+
+    function RAMad2() {
+        if (sodimm001ddr3 >= 1) {
+            if ((sodimm01ddr3in + sodimm001ddr3in) < slots) {
+                sodimm001ddr3 = (sodimm001ddr3 - 1)
+                sodimm001ddr3in = (sodimm001ddr3in + 1)
+            }
+        }
+    }
+
+    function scorez() {
+        document.getElementById("scorenz").innerText = score1 + score2 + score
+        if (tram >= 1) {
+            if (prcr.inteli111m111 === true) {
+                score1 = 10
+            }
+            if (prcr.inteli11m0001 === true) {
+                score1 = 12
+            }
+            score2 = (tram * 2)
+            score = (score1 + score2)
+            document.getElementById("scorenz").innerText = score1 + score2 + score
+        }
+        else {
+            score1 = 0
+            score2 = 0
+            score = 0
+        }
+    }
+
+        function liv() {
+            let ozes = (score)
+            money = (money + (ozes * Math.floor(Math.random() * 6)))
+            document.getElementById("moneyz").innerText = "$" + money
+        }
+
+</script>
+
+
+</body>
+</html>
